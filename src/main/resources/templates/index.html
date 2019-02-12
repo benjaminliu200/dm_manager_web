@@ -1,44 +1,173 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">访问model</h3>
-    </div>
-    <div class="panel-body">
-        <span th:text="${singlePerson.name}"></span>
-    </div>
-</div>
-<div th:if="${not #lists.isEmpty(people)}">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">列表</h3>
-        </div>
-        <div class="panel-body">
-            <ul class="list-group">
-                <li class="list-group-item" th:each="person : ${people}">
-                    <span th:text="${person.name}"></span>
-                    <span th:text="${person.age}"></span>
-                    <button class="btn" th:onlick="'getName(\''+${person.name}+'\');'">获得名字</button>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <ul class="nav nav-list">
+                <li class="nav-header">
+                    列表标题
+                </li>
+                <li class="active">
+                    <a href="#">首页</a>
+                </li>
+                <li>
+                    <a href="#">库</a>
+                </li>
+                <li>
+                    <a href="#">应用</a>
+                </li>
+                <li class="nav-header">
+                    功能列表
+                </li>
+                <li>
+                    <a href="#">资料</a>
+                </li>
+                <li>
+                    <a href="#">设置</a>
+                </li>
+                <li class="divider">
+                </li>
+                <li>
+                    <a href="#">帮助</a>
                 </li>
             </ul>
         </div>
+        <div class="span9">
+            <div class="page-header">
+                <h1>
+                    弹幕列表 <span>弹幕详细列表</span>
+                </h1>
+            </div>
+            <form class="form-search">
+                <input class="input-medium search-query" type="text"/>
+                <button type="submit" class="btn">查找</button>
+            </form>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        编号
+                    </th>
+                    <th>
+                        产品
+                    </th>
+                    <th>
+                        交付时间
+                    </th>
+                    <th>
+                        状态
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        01/04/2012
+                    </td>
+                    <td>
+                        Default
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        01/04/2012
+                    </td>
+                    <td>
+                        Approved
+                    </td>
+                </tr>
+                <tr class="error">
+                    <td>
+                        2
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        02/04/2012
+                    </td>
+                    <td>
+                        Declined
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        03/04/2012
+                    </td>
+                    <td>
+                        Pending
+                    </td>
+                </tr>
+                <tr class="info">
+                    <td>
+                        4
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        04/04/2012
+                    </td>
+                    <td>
+                        Call in to confirm
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <ul>
+                    <li>
+                        <a href="#">上一页</a>
+                    </li>
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                        <a href="#">下一页1</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
-<script th:src="@{/jquery/jquery-3.2.1.min.js}"></script>
-<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-<script th:inline="javascript">
-    var single = [[${singlePerson}]];
-    console.log(single.name+"/"+single.age);
-    function getName(name) {
-        console.log(name);
-    }
-</script>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>
